@@ -6,9 +6,9 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import "@/styles/tiptap-editor.css";
 import { useSession } from "@/context/SessionProvider";
-import { submitPost } from "@/lib/actions/posts.actions";
 import UserAvatar from "@/components/navbar/UserAvatar";
 import { cn } from "@/lib/utils";
+import { submitPost } from "@/lib/actions/posts.actions";
 
 export default function PostEditor() {
   const { user } = useSession();

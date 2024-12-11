@@ -63,11 +63,11 @@ export default function MenuBar({ className }: MenuBarProps) {
   const pathname = usePathname();
   return (
     <div className={className}>
-      {menuItems.map(({ href, icon: Icon, label, title }) => {
+      {menuItems.map(({ href, icon: Icon, label, title }, i) => {
         const isActive = pathname === href;
         return (
           <Button
-            key={href}
+            key={i}
             variant="ghost"
             className={`${
               isActive ? "bg-blue-500  font-bold text-white" : ""

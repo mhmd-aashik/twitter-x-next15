@@ -14,6 +14,7 @@ export default function PostEditor() {
   const { user } = useSession();
 
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit.configure({
         bold: false,

@@ -18,12 +18,16 @@ import {
 import { useSession } from "@/context/SessionProvider";
 import { logout } from "@/app/(auth)/action";
 import { useTheme } from "next-themes";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface UserButtonProps {
   className?: string;
 }
 export default function UserButton({ className }: UserButtonProps) {
   const { user } = useSession();
+
+  const query = useQueryClient();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -44,6 +48,7 @@ export default function UserButton({ className }: UserButtonProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
+            query.cancelQueries();
             logout();
           }}
         >

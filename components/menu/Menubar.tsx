@@ -63,20 +63,23 @@ export default function MenuBar({ className }: MenuBarProps) {
   const pathname = usePathname();
   return (
     <div className={className}>
-      {menuItems.map(({ href, icon: Icon, label, title }, i) => {
+      {menuItems.map(({ href, icon: Icon, label, title }, index) => {
         const isActive = pathname === href;
+
+        // Determine visibility based on index for mobile
+        const isHiddenOnMobile = index >= 5 ? "hidden sm:flex" : "flex";
+
         return (
           <Button
-            key={i}
+            key={label}
             variant="ghost"
-            className={`${
-              isActive ? "bg-blue-500  font-bold text-white" : ""
-            } flex text-xl items-center py-6 rounded-full justify-start gap-3`}
+            className={`${isActive ? "bg-blue-500 font-bold text-white" : ""} 
+            ${isHiddenOnMobile} text-xl items-center py-6 rounded-full justify-start gap-3`}
             title={title}
             asChild
           >
             <Link href={href!}>
-              <Icon className="!size-6 border-red-500" />
+              <Icon className="!size-6" />
               <span className="hidden lg:inline">{label}</span>
             </Link>
           </Button>

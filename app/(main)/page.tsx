@@ -1,3 +1,4 @@
+import TrendsSidebar from "@/components/menu/TrendsSidebar";
 import PostEditor from "@/components/posts/editor/PostEditor";
 import Post from "@/components/posts/Post";
 import prisma from "@/lib/prisma";
@@ -13,13 +14,14 @@ const Home = async () => {
   });
   console.log(posts);
   return (
-    <main className="w-full min-w-0">
+    <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
         <PostEditor />
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
       </div>
+      <TrendsSidebar />
     </main>
   );
 };
